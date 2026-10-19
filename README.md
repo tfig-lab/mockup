@@ -13,7 +13,7 @@ Mock-up do painel de gestão do programa de implantação do Modelo de Gestão d
 
 1. Crie um repositório (ex.: `mockup`) e envie estes arquivos para a branch `main`.
 2. Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`, e salve.
-3. Em 1 a 2 minutos o site fica em `https://thomassfig-182.github.io/mockup/`.
+3. Em 1 a 2 minutos o site fica em `https://tfig-lab.github.io/mockup/`.
 
 ## Observações
 
