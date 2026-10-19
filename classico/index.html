@@ -1042,22 +1042,10 @@ function vPeople(){
   var h = '<div class="pcards">' + keys.map(function(k){
     var p = PE[k], own = DEL.filter(function(d){ return d.own === k; }), pend = own.filter(function(d){ return d.status !== 'Aceito' && d.status !== 'Em atualização'; }).length;
     return '<div class="card pad" style="gap:10px"><div style="display:flex;align-items:center;gap:12px"><span class="av" style="--c:' + p.c + ';width:46px;height:46px;font-size:15px">' + ini(p.n) + '</span><div style="display:flex;flex-direction:column;min-width:0"><b>' + p.n + '</b><span class="small muted trunc">' + p.r + '</span></div></div>' +
-      '<div class="chips"><span class="tag" style="background:' + ORGC[p.org][0] + ';color:' + ORGC[p.org][1] + '">' + p.org + '</span>' + p.fr.map(function(f){ return '<span class="ptag" style="--c:' + PKM[f].c + '">' + f + '</span>'; }).join('') + '</div>' +
+      '<div class="chips"><span class="tag" style="background:' + ORGC[p.org][0] + ';color:' + ORGC[p.org][1] + '">' + (p.org === 'KPMG' ? 'Cliente' : p.org) + '</span>' + p.fr.map(function(f){ return '<span class="ptag" style="--c:' + PKM[f].c + '">' + f + '</span>'; }).join('') + '</div>' +
       '<div style="display:flex;flex-direction:column;gap:4px"><span class="small" style="display:flex;justify-content:space-between"><span class="muted">Alocação no programa</span><b class="num">' + p.al + '%</b></span><div class="bar"><b style="width:' + p.al + '%;background:' + p.c + '"></b></div></div>' +
       '<span class="small muted">' + (own.length ? own.length + ' entregáveis sob responsabilidade · ' + pend + (pend === 1 ? ' pendente' : ' pendentes') : (p.org === 'KPMG' ? 'Apoio transversal' : 'Valida e aprova entregáveis das frentes')) + '</span></div>';
   }).join('') + '</div>';
-  h += '<div class="card pad"><div class="chead"><h2 class="ct">Mapa de alocação · equipe KPMG (M' + (T - 8) + '–M' + (T + 3) + ')</h2><span class="small muted">% de dedicação por mês, derivada das atividades sob responsabilidade</span></div><div class="xs"><div class="hm"><div></div>' +
-    Array.from({ length:12 }, function(_, i){ var mm = T - 8 + i; return '<div class="mxh" style="' + (mm === T ? 'color:var(--today)' : '') + '">M' + mm + '</div>'; }).join('') +
-    keys.slice(0, 8).map(function(k){
-      var p = PE[k], own = DEL.filter(function(d){ return d.own === k; }), loads = [];
-      for (var m = T - 8; m <= T + 3; m++){ var L = 0; own.forEach(function(d){ d.segs.forEach(function(sg){ if (m >= sg.a && m <= sg.b) L += sg.k === 'main' ? 1 : 0.3; }); }); loads.push(L); }
-      var pk = Math.max.apply(null, loads.concat([1]));
-      return '<div style="display:flex;align-items:center;gap:8px;font-size:13px">' + av(k) + '<span class="trunc">' + p.n + '</span></div>' + loads.map(function(L){
-        var v = Math.round(p.al * Math.min(1, 0.35 + 0.65 * L / pk) / 5) * 5;
-        var bg = v >= 90 ? 'var(--h4)' : (v >= 70 ? 'var(--h3)' : (v >= 50 ? 'var(--h2)' : (v >= 30 ? 'var(--h1)' : 'var(--h0)')));
-        return '<div class="hmc num" style="background:' + bg + ';color:' + (v >= 70 ? '#fff' : 'var(--hfg)') + '">' + v + '%</div>';
-      }).join('');
-    }).join('') + '</div></div></div>';
   return h;
 }
 
