@@ -1,8 +1,5 @@
 <title>Cockpit CAPEX</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
 <style>
 /* Layout: app shell for wide screens. Fixed brand rail (KPMG blue) + fluid 12-column workspace; drawer column opens beside the board. */
 :root{
@@ -296,21 +293,134 @@ button.lrow:hover{background:var(--hover)}
   .grow{--lw:220px}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
+
+/* ===== Clean variant: Apple-style. Glass top bar, soft grey canvas, borderless rounded cards, system type. ===== */
+:root{
+  --bg:#F5F5F7; --surface:#FFFFFF; --surface-2:#FAFAFC; --line:#E5E5EA; --line-2:#F0F0F3;
+  --fg:#1D1D1F; --fg-2:#424245; --muted:#6E6E73;
+  --brand:#0071E3; --brand-2:#0071E3; --ink:#1D1D1F;
+  --plan:#1D1D1F; --real:#0071E3; --fc:#FF9F0A; --ac:#FF375F; --bp:#AEAEB2; --today:#FF3B30;
+  --good:#1B7F3B; --warn:#9A5B00; --bad:#C4213A;
+  --tag-bg:#EDEDF0; --tag-fg:#424245; --chip-on:#1D1D1F; --chip-on-fg:#FFFFFF;
+  --h0:#F0F0F3; --h1:#D6E8FF; --h2:#8EC1FF; --h3:#3D94F0; --h4:#0071E3; --hfg:#1D1D1F; --hinh:#EEF5FF;
+  --band:rgba(0,0,0,.028); --band-2:rgba(0,0,0,.012);
+  --track:#E8E8ED; --hover:#F5F5F7; --sel:#EEF5FF; --tagmix:85%;
+  --glass:rgba(250,250,252,.78); --shadow:0 1px 2px rgba(0,0,0,.04), 0 10px 30px rgba(0,0,0,.05);
+  --f-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#000000; --surface:#1C1C1E; --surface-2:#232326; --line:#2C2C2E; --line-2:#262628;
+  --fg:#F5F5F7; --fg-2:#D1D1D6; --muted:#98989D; --brand:#2997FF; --brand-2:#2997FF; --ink:#F5F5F7;
+  --plan:#F5F5F7; --real:#2997FF; --fc:#FFB340; --ac:#FF6482; --bp:#636366; --today:#FF453A;
+  --good:#30D158; --warn:#FFB340; --bad:#FF6961; --tag-bg:#2C2C2E; --tag-fg:#D1D1D6; --chip-on:#F5F5F7; --chip-on-fg:#000000;
+  --h0:#2C2C2E; --h1:#16365C; --h2:#1F5FA8; --h3:#2F80E0; --h4:#2997FF; --hfg:#F5F5F7; --hinh:#10243D;
+  --band:rgba(255,255,255,.035); --band-2:rgba(255,255,255,.015); --track:#2C2C2E; --hover:#232326; --sel:#10243D; --tagmix:45%;
+  --glass:rgba(22,22,24,.78); --shadow:none; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#1C1C1E; --surface-2:#232326; --line:#2C2C2E; --line-2:#262628;
+  --fg:#F5F5F7; --fg-2:#D1D1D6; --muted:#98989D; --brand:#2997FF; --brand-2:#2997FF; --ink:#F5F5F7;
+  --plan:#F5F5F7; --real:#2997FF; --fc:#FFB340; --ac:#FF6482; --bp:#636366; --today:#FF453A;
+  --good:#30D158; --warn:#FFB340; --bad:#FF6961; --tag-bg:#2C2C2E; --tag-fg:#D1D1D6; --chip-on:#F5F5F7; --chip-on-fg:#000000;
+  --h0:#2C2C2E; --h1:#16365C; --h2:#1F5FA8; --h3:#2F80E0; --h4:#2997FF; --hfg:#F5F5F7; --hinh:#10243D;
+  --band:rgba(255,255,255,.035); --band-2:rgba(255,255,255,.015); --track:#2C2C2E; --hover:#232326; --sel:#10243D; --tagmix:45%;
+  --glass:rgba(22,22,24,.78); --shadow:none; color-scheme:dark;
+}
+body{-webkit-font-smoothing:antialiased;letter-spacing:-.003em}
+.app{flex-direction:column}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:16;background:var(--glass)}
+.topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--glass);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.tn-in{max-width:1680px;margin:0 auto;min-height:52px;display:flex;align-items:center;gap:8px 20px;flex-wrap:wrap;padding-left:max(28px, env(safe-area-inset-left,0px));padding-right:max(28px, env(safe-area-inset-right,0px))}
+.tn-brand{font-family:var(--f-display);font-size:17px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tn-brand img{height:18px;width:auto}
+.topnav .nav{flex-direction:row;gap:2px;flex:1;justify-content:center;flex-wrap:wrap}
+.topnav .nav button{width:auto;min-height:34px;padding:0 14px;border-radius:999px;color:var(--fg-2);font-size:13px;gap:0}
+.topnav .nav button svg{display:none}
+.topnav .nav button:hover{background:transparent;color:var(--fg)}
+.topnav .nav button[aria-current="page"]{background:var(--chip-on);color:var(--chip-on-fg);font-weight:600}
+.tn-r{display:flex;align-items:center;gap:10px}
+.mock{font-size:11px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.main{max-width:1680px;width:100%;margin:0 auto}
+.hdr{background:transparent;border:0;overflow:visible;padding-block:52px 4px;padding-right:max(28px, env(safe-area-inset-right,0px));gap:10px}
+.eyebrow{color:var(--muted);letter-spacing:0;text-transform:none;font-size:17px;font-weight:600}
+h1{font-family:var(--f-display);font-size:clamp(40px, 4.4vw, 68px);font-weight:700;letter-spacing:-.03em;line-height:1.04;color:var(--fg)}
+.view{gap:24px;padding-block:28px 72px}
+.card{border:0;border-radius:22px;box-shadow:var(--shadow)}
+.pad{padding:26px 28px;gap:14px}
+.ct{font-family:var(--f-display);font-size:24px;font-weight:600;letter-spacing:-.018em;color:var(--fg)}
+.kpis{gap:16px}
+.kpi{padding:22px 24px;gap:8px}
+.kpi.stripe{border-top:0}
+.kpi .l{text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px}
+.kpi.stripe .l::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.kpi .v{font-family:var(--f-display);font-size:46px;font-weight:600;letter-spacing:-.035em;color:var(--fg)}
+.kpi .s{font-size:13px}
+.btn{border-radius:999px;border-color:transparent;background:var(--tag-bg);color:var(--fg);font-weight:500}
+.btn:hover{color:var(--fg);border-color:transparent;filter:brightness(.96)}
+.btn.pri{background:var(--brand-2);color:#fff}
+.seg{background:var(--track);border:0;border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0 !important;border-radius:999px;min-height:32px;background:transparent;color:var(--fg-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.14);font-weight:600}
+.chip{border:0;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);color:var(--fg-2)}
+.chip:hover{color:var(--fg);box-shadow:inset 0 0 0 1px var(--muted)}
+.chip[aria-pressed="true"]{background:var(--chip-on);color:var(--chip-on-fg);box-shadow:none}
+.qbox{border-radius:999px;border-color:transparent;background:var(--track)}
+.bar-tools{padding:14px 16px}
+.tag{background:var(--tag-bg);color:var(--tag-fg);border-radius:999px;font-weight:600;padding:0 10px}
+.tag.warn{background:color-mix(in srgb, #FF9F0A 16%, transparent);color:var(--warn)}
+.ptag{border-radius:999px;font-weight:600}
+.avs .av{border-color:var(--bg)}
+.tbl{border-left:0;border-top:0;border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.gname{font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-.015em;display:inline-flex;align-items:center;gap:10px;color:var(--fg)}
+.gname::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tr{border-bottom-color:var(--line-2)}
+.tc{border-right:0}
+.tr.th,.er.th,.fr.th,.rr.th{text-transform:none;letter-spacing:0;font-size:12px;font-weight:600}
+.stc{margin:7px 8px;border-radius:999px;border-right:0;font-weight:600;font-size:12px}
+.evb{border-radius:999px;border-color:transparent;background:var(--tag-bg)}
+.grow{border-bottom-color:var(--line-2)}
+.glab{border-right-color:var(--line-2)}
+.grow.grp{background:var(--surface-2)}
+.gbar,.gbar.thin{border-radius:999px}
+.wv{border-radius:999px;border-right:3px solid var(--surface)}
+.gdia{border-color:var(--surface);box-shadow:none}
+.ghint{border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+.drawer{top:72px;border-radius:22px}
+.dsec{text-transform:none;letter-spacing:0;font-size:13px;color:var(--fg);font-weight:600}
+.mcard{border:0;box-shadow:inset 0 0 0 1px var(--line);border-radius:16px}
+.mcard:hover{box-shadow:inset 0 0 0 1px var(--muted)}
+.mcard[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--c)}
+.bar,.hbar,.bar>b,.hbar>b{border-radius:999px}
+.band span{letter-spacing:.02em;text-transform:none;font-weight:600}
+.l-plan{stroke-width:2}
+.lrow{border-bottom-color:var(--line-2)}
+.pill{font-weight:600}
+.ext{border-radius:6px}
+.drop{border-radius:18px}
+.addf{border-radius:14px}
+.rkc{border-radius:12px}
+.mxc,.hmc{border-radius:8px}
+.rchip{background:#1D1D1F;border-radius:999px}
+.toast{border-radius:14px}
+@media (max-width:1499px){.drawer{top:0;border-radius:0}}
+@media (max-width:900px){.topnav .nav{order:3;flex-basis:100%;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto}.tn-r .mock{display:none}.hdr{padding-top:28px}}
 </style>
 
 <div class="app">
-  <aside class="rail" aria-label="Navegação do cockpit">
-    <div class="brand" id="brand"><b>Cockpit CAPEX</b><span>Gestão integrada da implantação</span></div>
-    <nav class="nav" id="nav"></nav>
-    <div>
-      <div class="railk">Frentes · pacotes</div>
-      <div id="pknav"></div>
+  <header class="topnav">
+    <div class="tn-in">
+      <b class="tn-brand" id="brand">Cockpit CAPEX</b>
+      <nav class="nav" id="nav" aria-label="Módulos"></nav>
+      <div class="tn-r">
+        <span class="mock">Mock-up</span>
+        <button class="btn" data-act="fs" id="fsbtn"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Modo apresentação</button>
+      </div>
     </div>
-    <div class="railnote">Mock-up ilustrativo. Nomes, valores e percentuais são fictícios; pacotes, entregáveis, critérios de aceite e riscos seguem a estrutura do projeto.</div>
-  </aside>
+  </header>
+  <div id="pknav" hidden></div>
   <main class="main">
     <header class="hdr">
-      <div class="ribbon" aria-hidden="true">MOCK-UP</div>
       <div class="eyebrow" id="eyebrow"></div>
       <div class="hrow">
         <h1 id="title"></h1>
@@ -318,7 +428,6 @@ button.lrow:hover{background:var(--hover)}
           <span class="tag warn">Dados ilustrativos</span>
           <span class="tag num" id="stag"></span>
           <div class="avs" id="team"></div>
-          <button class="btn" data-act="fs" id="fsbtn"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Modo apresentação</button>
         </div>
       </div>
     </header>
@@ -340,15 +449,15 @@ function ic(d, cls){ return '<svg class="ic ' + (cls || '') + '" viewBox="0 0 24
 var CHEV = 'M9 6l6 6-6 6';
 
 var PK = [
-  { id:'P1', name:'Mobilização e planejamento integrado', short:'Mobilização e planejamento', c:'#00338D', ei:'EI1' },
-  { id:'P2', name:'Processos e governança de dados', short:'Processos e dados', c:'#1E49E2', ei:'EI2' },
-  { id:'P3', name:'Acompanhamento e pareceres integrados', short:'Acompanhamento e pareceres', c:'#3B4F80', ei:'EI1–EI7' },
-  { id:'P4', name:'Desenho organizacional e planejamento da mudança', short:'Desenho org. e GMO', c:'#7213EA', ei:'EI2A' },
-  { id:'P5', name:'Comunicação, capacitação, EAD e prontidão', short:'Capacitação e EAD', c:'#C8157A', ei:'EI4' },
-  { id:'P6', name:'Testes e prontidão integrada', short:'Testes e prontidão', c:'#510DBC', ei:'EI3' },
-  { id:'P7', name:'Implantação assistida, adoção e estabilização', short:'Implantação assistida', c:'#098E7E', ei:'EI5' },
-  { id:'P8', name:'Implantação operacional do Cost Control corporativo', short:'Cost Control', c:'#0077B6', ei:'EI5' },
-  { id:'P9', name:'Sustentação, transferência e encerramento', short:'Sustentação e encerramento', c:'#64748B', ei:'EI7' }
+  { id:'P1', name:'Mobilização e planejamento integrado', short:'Mobilização e planejamento', c:'#0071E3', ei:'EI1' },
+  { id:'P2', name:'Processos e governança de dados', short:'Processos e dados', c:'#5E5CE6', ei:'EI2' },
+  { id:'P3', name:'Acompanhamento e pareceres integrados', short:'Acompanhamento e pareceres', c:'#48484A', ei:'EI1–EI7' },
+  { id:'P4', name:'Desenho organizacional e planejamento da mudança', short:'Desenho org. e GMO', c:'#BF5AF2', ei:'EI2A' },
+  { id:'P5', name:'Comunicação, capacitação, EAD e prontidão', short:'Capacitação e EAD', c:'#FF375F', ei:'EI4' },
+  { id:'P6', name:'Testes e prontidão integrada', short:'Testes e prontidão', c:'#FF9F0A', ei:'EI3' },
+  { id:'P7', name:'Implantação assistida, adoção e estabilização', short:'Implantação assistida', c:'#30B0C7', ei:'EI5' },
+  { id:'P8', name:'Implantação operacional do Cost Control corporativo', short:'Cost Control', c:'#34C759', ei:'EI5' },
+  { id:'P9', name:'Sustentação, transferência e encerramento', short:'Sustentação e encerramento', c:'#8E8E93', ei:'EI7' }
 ];
 var PKM = {}; PK.forEach(function(p){ PKM[p.id] = p; });
 
@@ -432,25 +541,25 @@ function ini(n){ var p = n.split(' '); return (p[0][0] + (p[1] ? p[1][0] : '')).
 function av(k){ var p = PE[k] || PE.VC; return '<span class="av" style="--c:' + p.c + '" title="' + esc(p.n) + '">' + ini(p.n) + '</span>'; }
 
 var ST = {
-  'Aceito':['#16794C','#FFFFFF'], 'Concluído':['#16794C','#FFFFFF'],
-  'Em atualização':['#9FE3FA','#06304A'], 'Em andamento':['#F2A93B','#2B1A00'],
-  'Em verificação':['#7213EA','#FFFFFF'], 'Atrasado':['#C8233F','#FFFFFF'], 'Não iniciado':['#DCE1EA','#33415C']
+  'Aceito':['#E3F6E8','#1B7F3B'], 'Concluído':['#E3F6E8','#1B7F3B'],
+  'Em atualização':['#E5F1FF','#0060C7'], 'Em andamento':['#FFF1DC','#9A5B00'],
+  'Em verificação':['#EFE7FC','#6B2FB8'], 'Atrasado':['#FDE7EA','#C4213A'], 'Não iniciado':['#EEEEF0','#6E6E73']
 };
 var ESTS = { 'Aceito':['#DDF3E7','#0E5C38'], 'Em verificação':['#EEE3FD','#4A0CA0'], 'Com ressalvas':['#FFE9CC','#7A4B00'], 'Em elaboração':['#FCE1E5','#8E1830'], 'Enviado':['#DCE8FF','#00338D'] };
 function pill(lab, pair){ return '<span class="pill" style="background:' + pair[0] + ';color:' + pair[1] + '">' + esc(lab) + '</span>'; }
 var EXTC = { docx:'#1E49E2', xlsx:'#16794C', pdf:'#C8233F', pptx:'#B4510F', mp4:'#7213EA', xer:'#0C233C' };
 
 var PH = [
-  { id:'F1', n:'Mobilização integrada', a:1, b:1, c:'#00338D' },
-  { id:'F2', n:'Desenho funcional, técnico e de dados', a:1, b:3, c:'#1E49E2' },
-  { id:'F2A', n:'Validação do modelo operacional', a:2, b:4, c:'#1E49E2' },
-  { id:'F3', n:'Construção e preparação', a:3, b:5, c:'#7213EA' },
-  { id:'F4', n:'Testes e prontidão do piloto', a:4, b:5, c:'#510DBC' },
-  { id:'F5', n:'Go-live do piloto', a:6, b:6, c:'#C8157A' },
-  { id:'F6', n:'Estabilização do piloto', a:6, b:9, c:'#098E7E' },
-  { id:'F7·1', n:'Expansão · Onda 1 (5 unidades)', a:7, b:20, c:'#0077B6', lag:0.8 },
-  { id:'F7·2', n:'Expansão · Onda 2 (6 unidades)', a:21, b:30, c:'#0077B6' },
-  { id:'F8', n:'Transição e encerramento', a:28, b:30, c:'#3B4F80' }
+  { id:'F1', n:'Mobilização integrada', a:1, b:1, c:'#1D1D1F' },
+  { id:'F2', n:'Desenho funcional, técnico e de dados', a:1, b:3, c:'#0071E3' },
+  { id:'F2A', n:'Validação do modelo operacional', a:2, b:4, c:'#0071E3' },
+  { id:'F3', n:'Construção e preparação', a:3, b:5, c:'#5E5CE6' },
+  { id:'F4', n:'Testes e prontidão do piloto', a:4, b:5, c:'#5E5CE6' },
+  { id:'F5', n:'Go-live do piloto', a:6, b:6, c:'#FF375F' },
+  { id:'F6', n:'Estabilização do piloto', a:6, b:9, c:'#30B0C7' },
+  { id:'F7·1', n:'Expansão · Onda 1 (5 unidades)', a:7, b:20, c:'#0071E3', lag:0.8 },
+  { id:'F7·2', n:'Expansão · Onda 2 (6 unidades)', a:21, b:30, c:'#5AC8FA' },
+  { id:'F8', n:'Transição e encerramento', a:28, b:30, c:'#8E8E93' }
 ];
 var EIS = [
   { id:'EI0', m:0, n:'Autorização formal de início e mobilização', s:'done' },
@@ -466,12 +575,12 @@ var EIS = [
   { id:'EI6·A2', m:30, n:'Aceite da estabilização da Onda 2', s:'plan' },
   { id:'EI7', m:30, n:'Encerramento e transição para a operação permanente', s:'plan' }
 ];
-var EIC = { done:'#16794C', next:'#F2A93B', plan:'#1E49E2' };
+var EIC = { done:'#34C759', next:'#FF9F0A', plan:'#0071E3' };
 var WAVES = [
-  { lab:'Piloto · 1 unidade', a:1, b:6, bg:'#00338D', fg:'#FFFFFF', lt:'var(--band)' },
-  { lab:'Onda 1 · 5 unidades', a:7, b:20, bg:'#1E49E2', fg:'#FFFFFF', lt:'var(--band-2)' },
-  { lab:'Onda 2 · 6 unidades', a:21, b:30, bg:'#00B8F5', fg:'#06243F', lt:'var(--band)' },
-  { lab:'Margem até o limite (M36) · CSC conforme plano', a:31, b:36, bg:'#C9D1E0', fg:'#16213A', lt:'repeating-linear-gradient(135deg, var(--band) 0 6px, transparent 6px 12px)' }
+  { lab:'Piloto · 1 unidade', a:1, b:6, bg:'#1D1D1F', fg:'#FFFFFF', lt:'var(--band)' },
+  { lab:'Onda 1 · 5 unidades', a:7, b:20, bg:'#0071E3', fg:'#FFFFFF', lt:'var(--band-2)' },
+  { lab:'Onda 2 · 6 unidades', a:21, b:30, bg:'#5AC8FA', fg:'#00243F', lt:'var(--band)' },
+  { lab:'Margem até o limite (M36) · CSC conforme plano', a:31, b:36, bg:'#E8E8ED', fg:'#1D1D1F', lt:'repeating-linear-gradient(135deg, var(--band) 0 6px, transparent 6px 12px)' }
 ];
 var AREAS = [{ id:'ALL', lab:'Todas as áreas' }, { id:'PIL', lab:'Piloto · 1 unidade' }, { id:'O1', lab:'Onda 1 · 5 unidades' }, { id:'O2', lab:'Onda 2 · 6 unidades' }];
 var RISKS = [
@@ -706,7 +815,7 @@ function vOverview(){
   rm += '<div class="grow" style="min-height:60px;border-bottom:0"><div class="glab"><span class="tag warn" style="min-width:46px;justify-content:center">EI</span><span>Marcos de implantação</span></div><div class="gtrack" style="background-size:' + (100 / N).toFixed(4) + '% 100%">' +
     EIS.map(function(e, i){ return '<div class="gdia" style="--c:' + EIC[e.s] + ';left:' + X36(e.m) + '%;top:22px" title="' + e.id + ' · ' + esc(e.n) + ' · M' + e.m + '"></div><span class="eil" style="left:' + X36(e.m) + '%;top:' + (i % 2 ? 36 : 2) + 'px' + (e.m === 0 ? ';transform:none' : '') + '">' + e.id + '</span>'; }).join('') +
     '<div class="gtoday" style="left:' + X36(T) + '%"></div></div></div>';
-  rm += '</div></div><div class="legs"><span class="leg"><span class="gdia s" style="--c:#16794C"></span>Marco aceito</span><span class="leg"><span class="gdia s" style="--c:#F2A93B"></span>Próximo marco</span><span class="leg"><span class="gdia s" style="--c:#1E49E2"></span>Planejado</span><span class="leg"><i class="dash" style="--c:var(--today)"></i>Hoje (M' + T + ')</span></div></div>';
+  rm += '</div></div><div class="legs"><span class="leg"><span class="gdia s" style="--c:#34C759"></span>Marco aceito</span><span class="leg"><span class="gdia s" style="--c:#FF9F0A"></span>Próximo marco</span><span class="leg"><span class="gdia s" style="--c:#0071E3"></span>Planejado</span><span class="leg"><i class="dash" style="--c:var(--today)"></i>Hoje (M' + T + ')</span></div></div>';
 
   var sc = '<div class="card pad s5"><div class="chead"><h2 class="ct">Curva S consolidada</h2><button class="evb" data-act="view" data-arg="scurve">Abrir por frente e área</button></div>' + LEG_S + sPlot(cAll, 'tall', 'Curva S consolidada do programa') +
     '<div class="small muted">Desvio ' + gapTxt(rNow, pNow) + ' · término projetado M' + cAll.end + ' (linha de base M' + cAll.pend + ')</div></div>';
@@ -799,19 +908,19 @@ function table(groups, cnt){
           '<div class="tc c"><button class="evb" data-act="goev" data-arg="' + esc(d.code) + '" aria-label="Evidências de ' + esc(d.code) + '">' + ic('M20 11.5l-8.5 8.5a5 5 0 0 1-7-7l9-9a3.3 3.3 0 0 1 4.7 4.7l-9 9a1.7 1.7 0 0 1-2.4-2.4L15 7', 'sm') + (cnt[d.code] || 0) + '</button></div></div>';
         if (od) d.kids.forEach(function(k){
           var ks = ST[k.st], kp = PE[k.own];
-          h += '<div class="tr act"><div class="tc"></div><div class="tc" style="padding-left:40px">' + (k.ms ? '<span class="gdia s" style="--c:' + (k.st === 'Concluído' ? '#16794C' : '#9AA6BF') + ';width:10px;height:10px"></span>' : '<span class="dot" style="--c:var(--bp);width:7px;height:7px"></span>') + '<span class="trunc" style="font-size:12.5px">' + k.name + '</span></div>' +
+          h += '<div class="tr act"><div class="tc"></div><div class="tc" style="padding-left:40px">' + (k.ms ? '<span class="gdia s" style="--c:' + (k.st === 'Concluído' ? '#34C759' : '#AEAEB2') + ';width:10px;height:10px"></span>' : '<span class="dot" style="--c:var(--bp);width:7px;height:7px"></span>') + '<span class="trunc" style="font-size:12.5px">' + k.name + '</span></div>' +
             '<div class="tc">' + av(k.own) + '<span class="trunc small">' + kp.n + '</span></div><div class="stc" style="background:' + ks[0] + ';color:' + ks[1] + ';font-size:12px">' + k.st + '</div><div class="tc"></div>' +
             '<div class="tc c small num">M' + k.a + (k.b > k.a ? '–M' + k.b : '') + '</div><div class="tc"><div class="bar"><b style="width:' + k.pct + '%;background:var(--bp)"></b></div><span class="small num" style="width:38px;text-align:right">' + k.pct + '%</span></div><div class="tc"></div></div>';
         });
         if (od) h += customTableRows(d, p);
       });
       h += '<div class="tr" style="min-height:38px"><div class="tc"></div><div class="tc small muted">Distribuição de status do pacote</div><div class="tc"></div><div class="tc" style="padding:0 6px"><div class="batt">' +
-        STORD.filter(function(k){ return sc[k]; }).map(function(k){ return '<i style="width:' + (sc[k] / g.dels.length * 100).toFixed(2) + '%;background:' + ST[k][0] + '" title="' + k + ': ' + sc[k] + '"></i>'; }).join('') +
+        STORD.filter(function(k){ return sc[k]; }).map(function(k){ return '<i style="width:' + (sc[k] / g.dels.length * 100).toFixed(2) + '%;background:' + ST[k][1] + '" title="' + k + ': ' + sc[k] + '"></i>'; }).join('') +
         '</div></div><div class="tc"></div><div class="tc c small muted num">M' + ms + '–M' + me + '</div><div class="tc"><div class="bar"><b style="width:' + Math.round(r) + '%;background:' + p.c + '"></b></div><span class="small num" style="width:38px;text-align:right;font-weight:700">' + Math.round(r) + '%</span></div><div class="tc c small muted">' + evN + ' arquivos</div></div></div>';
     }
     return h + '</section>';
   }).join('') + '</div></div>' +
-  '<div class="legs small" style="margin-top:4px">' + STORD.map(function(k){ return '<span class="leg"><span class="dot" style="--c:' + ST[k][0] + ';border-radius:3px"></span>' + k + '</span>'; }).join('') + '</div>';
+  '<div class="legs small" style="margin-top:4px">' + STORD.map(function(k){ return '<span class="leg"><span class="dot" style="--c:' + ST[k][1] + '"></span>' + k + '</span>'; }).join('') + '</div>';
 }
 function gantt(groups){
   var Z = { all:[1,36], pil:[1,12], ondas:[7,30] }[S.zoom], ws = Z[0], we = Z[1], nW = we - ws + 1;
@@ -835,11 +944,11 @@ function gantt(groups){
     g.dels.forEach(function(d){
       var od = !!S.openD[d.code];
       var bars = d.segs.map(function(sg){ var cl = clip(sg.a, sg.b); if (!cl) return ''; var rp = Math.round(100 * segReal(d, sg, T)); return '<div class="gbar' + (sg.k === 'upd' ? ' thin upd' : '') + '" style="' + cl + '" title="' + esc(d.code) + ' · ' + (sg.lab || 'elaboração') + ' M' + sg.a + '–M' + sg.b + ' · ' + rp + '%"><b style="width:' + rp + '%"></b></div>'; }).join('');
-      var dia = (d.me >= ws && d.me <= we) ? '<div class="gdia" style="--c:' + (d.cap ? '#F2A93B' : '#16794C') + ';left:' + pos(d.me + 1) + '%;width:10px;height:10px;margin:-5px 0 0 -5px" title="Aceite Cliente · M' + d.me + '"></div>' : '';
+      var dia = (d.me >= ws && d.me <= we) ? '<div class="gdia" style="--c:' + (d.cap ? '#FF9F0A' : '#34C759') + ';left:' + pos(d.me + 1) + '%;width:10px;height:10px;margin:-5px 0 0 -5px" title="Aceite Cliente · M' + d.me + '"></div>' : '';
       h += '<div class="grow del' + (S.sel === d.code ? ' selr' : '') + '" style="--c:' + p.c + '"><div class="glab" style="padding-left:22px"><button class="tog" data-act="td" data-arg="' + esc(d.code) + '" aria-expanded="' + od + '" aria-label="Atividades de ' + esc(d.code) + '" style="width:24px;height:24px">' + ic(CHEV, 'sm') + '</button><span class="ptag" style="font-size:10.5px">' + d.code + '</span><button class="nm trunc" data-act="sel" data-arg="' + esc(d.code) + '" style="font-size:12.5px" title="' + esc(d.name) + '">' + d.name + '</button></div><div class="gtrack add" data-act="trackadd" data-arg="' + esc(d.code) + '" data-ws="' + ws + '" data-nw="' + nW + '" title="Clique para criar uma atividade neste mês" style="' + bgs + '">' + bars + dia + td + '</div></div>';
       if (od) d.kids.forEach(function(k){
         var cl = clip(k.a, k.b), inner = '';
-        if (k.ms){ if (k.b >= ws && k.b <= we) inner = '<div class="gdia" style="--c:' + (k.st === 'Concluído' ? '#16794C' : '#9AA6BF') + ';left:' + pos(k.b + 1) + '%;width:10px;height:10px;margin:-5px 0 0 -5px" title="' + k.name + '"></div>'; }
+        if (k.ms){ if (k.b >= ws && k.b <= we) inner = '<div class="gdia" style="--c:' + (k.st === 'Concluído' ? '#34C759' : '#AEAEB2') + ';left:' + pos(k.b + 1) + '%;width:10px;height:10px;margin:-5px 0 0 -5px" title="' + k.name + '"></div>'; }
         else if (cl) inner = '<div class="gbar thin' + (k.upd ? ' upd' : '') + '" style="--c:' + (k.st === 'Atrasado' ? '#C8233F' : '#5A6B8C') + ';' + cl + '" title="' + k.name + ' · ' + k.pct + '%"><b style="width:' + k.pct + '%"></b></div>';
         h += '<div class="grow act"><div class="glab" style="padding-left:60px"><span class="trunc small" style="color:var(--fg-2)">' + k.name + '</span><span class="small muted num" style="margin-left:auto">' + k.pct + '%</span></div><div class="gtrack" style="' + bgs + '">' + inner + td + '</div></div>';
       });

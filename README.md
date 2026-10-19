@@ -6,7 +6,8 @@ Mock-up do painel de gestão do programa de implantação do Modelo de Gestão d
 
 ## Arquivos
 
-- `index.html` — o cockpit inteiro, em um arquivo só.
+- `index.html` — o cockpit (visual clean), em um arquivo só.
+- `classico/index.html` — a versão anterior, com barra lateral azul: `https://tfig-lab.github.io/mockup/classico/`.
 - `assets/kpmg-logo.svg` — coloque aqui o logo oficial (versão branca). Sem ele, aparece o texto "KPMG".
 
 ## Publicar no GitHub Pages
