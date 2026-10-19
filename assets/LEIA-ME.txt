@@ -1,0 +1,4 @@
+Coloque aqui o logo oficial da KPMG, versão branca (para fundo azul):
+  kpmg-logo.svg   (preferencial)
+  ou kpmg-logo.png
+O cockpit detecta o arquivo sozinho e troca o texto "KPMG" pelo logo.
