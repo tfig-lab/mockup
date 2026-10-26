@@ -296,6 +296,81 @@ button.lrow:hover{background:var(--hover)}
   .grow{--lw:220px}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
+/* indicadores meio e fim */
+.ind-intro{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:16px;align-items:stretch}
+.ind-box{border-radius:14px;padding:16px 18px;background:var(--surface-2);border:1px solid var(--line-2);display:flex;flex-direction:column;gap:6px}
+.ind-box .k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.ind-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.ind-arrow .ic{width:28px;height:28px}
+.ind-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:1400px){.ind-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.ind-grid{grid-template-columns:1fr}.ind-intro{grid-template-columns:1fr}.ind-arrow{transform:rotate(90deg)}}
+.icard{display:flex;flex-direction:column;gap:12px;padding:22px 24px}
+.icard.on{box-shadow:0 0 0 2px var(--brand-2), var(--shadow, 0 0 0 transparent)}
+.ihead{display:flex;align-items:flex-start;gap:10px}
+.ihead h3{margin:0;font-size:17px;font-weight:700;line-height:1.25;flex:1;text-wrap:balance}
+.inum{width:28px;height:28px;border-radius:50%;background:var(--chip-on);color:var(--chip-on-fg);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none}
+.ival{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.ival .v,.tfim .v{font-family:var(--f-display);font-size:44px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.spark{width:150px;height:46px;flex:none;overflow:visible}
+.tfim .spark{width:100%;height:56px}
+.spark path.s{fill:none;stroke:var(--real);stroke-width:2.2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.spark path.m{fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.spark path.a{fill:color-mix(in srgb, var(--real) 12%, transparent);stroke:none}
+.imede{font-size:13px;color:var(--fg-2);margin:0;max-width:62ch}
+.mlist{display:flex;flex-direction:column;gap:1px;border-top:1px solid var(--line-2);padding-top:10px}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) 84px 72px;align-items:center;gap:10px;min-height:30px;border:0;background:transparent;text-align:left;padding:0 6px;border-radius:6px;cursor:help;color:inherit;width:100%;font-size:13px}
+.mrow:hover,.mrow:focus-visible{background:var(--hover)}
+.mrow .bar,.tnode .bar{height:6px}
+.mrow .num{text-align:right;font-size:12px;font-weight:700}
+.ilink{align-self:flex-start;margin-top:auto}
+#tip{position:fixed;z-index:60;max-width:320px;padding:12px 14px;border-radius:12px;background:var(--fg);color:var(--bg);font-size:12.5px;line-height:1.45;box-shadow:0 12px 32px rgba(0,0,0,.28);pointer-events:none}
+#tip b{display:block;font-size:13.5px;margin-bottom:4px}
+#tip .tk{opacity:.65;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;margin-top:8px;font-weight:700}
+.tree{display:grid;grid-template-columns:minmax(0,1.35fr) 56px minmax(280px,1fr);align-items:center}
+.tleft,.tright{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tnode{display:grid;grid-template-columns:minmax(0,1fr) 96px 84px;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line-2);position:relative;cursor:help}
+.tnode:hover,.tnode:focus-visible{border-color:var(--brand-2)}
+.tnode::after{content:"";position:absolute;left:100%;top:50%;width:28px;border-top:2px solid var(--line)}
+.tmid{align-self:stretch;position:relative}
+.tmid::before{content:"";position:absolute;left:27px;top:44px;bottom:26px;border-left:2px solid var(--line)}
+.tmid::after{content:"";position:absolute;left:27px;right:0;top:50%;border-top:2px solid var(--line)}
+.tfim{border-radius:16px;border:2px solid var(--c);padding:16px 18px;display:flex;flex-direction:column;gap:8px;background:var(--surface)}
+.ind-read{display:flex;gap:10px;padding:12px 14px;border-radius:12px;background:var(--surface-2);font-size:13px;color:var(--fg-2)}
+.ind-read b{color:var(--fg)}
+@media (max-width:1000px){.tree{grid-template-columns:1fr;gap:12px}.tmid{display:none}.tnode::after{display:none}}
+.scatter{position:relative;height:300px;margin:6px 8px 26px 46px;border-left:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scatter .q{position:absolute;font-size:11px;font-weight:600;color:var(--muted);padding:6px 8px;line-height:1.3}
+.scatter .qline{position:absolute}
+.sdot{position:absolute;width:32px;height:32px;margin:0 0 -16px -16px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;border:2px solid var(--surface);cursor:pointer;padding:0}
+.scatter .ylab{left:-46px}
+
+.xparts{display:flex;flex-direction:column;gap:8px}
+.xpart{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line-2)}
+.xk{width:26px;height:26px;border-radius:7px;background:var(--tag-bg);color:var(--tag-fg);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex:none}
+.ucrit{border-collapse:separate;border-spacing:3px;width:100%;min-width:620px;font-size:12.5px}
+.ucrit th{font-weight:600;text-align:center;color:var(--muted);padding:6px}
+.ucrit tbody th{text-align:left;color:var(--fg-2)}
+.ucrit td{text-align:center;background:var(--surface-2);border-radius:6px;height:32px}
+.ucrit .ok{color:var(--good);font-weight:700}
+.ucrit .no{color:var(--bad);font-weight:700}
+.ucrit tr.tot th,.ucrit tr.tot td{border-top:2px solid var(--line);font-weight:700}
+
+.db{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.dbaxis{position:relative;height:16px;margin:0 56px 0 190px;font-size:10.5px;color:var(--muted)}
+.dbaxis span{position:absolute;transform:translateX(-50%)}
+.dbrow{display:grid;grid-template-columns:190px minmax(0,1fr) 56px;align-items:center;min-height:40px;border:0;background:transparent;border-radius:8px;padding:0;cursor:pointer;color:inherit;text-align:left;width:100%}
+.dbrow:hover{background:var(--hover)}
+.dbrow.on{background:var(--sel)}
+.dbl{display:flex;align-items:center;gap:8px;min-width:0;font-size:12.5px;padding-left:4px}
+.dbt{position:relative;height:28px;background-image:linear-gradient(to right,var(--line-2) 1px,transparent 1px);background-size:25% 100%;border-right:1px solid var(--line-2)}
+.dbline{position:absolute;top:50%;height:3px;margin-top:-1.5px;background:var(--line);border-radius:2px}
+.dbm,.dbf{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%}
+.dbm{background:var(--surface);border:3px solid var(--brand-2)}
+.dbf{border:2px solid var(--surface);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.dbm.s,.dbf.s{position:static;margin:0;display:inline-block}
+.dbg{text-align:right;font-size:12px;font-weight:700;padding-right:4px}
+@media (max-width:600px){.dbrow{grid-template-columns:120px minmax(0,1fr) 48px}.dbaxis{margin-left:120px;margin-right:48px}}
 </style>
 
 <div class="app">
@@ -602,9 +677,9 @@ var S = {
   openG:{ P1:true, P2:true, P3:true, P4:true, P5:true, P6:true, P7:true, P8:true, P9:true },
   openD:{ 'GI-02':true, 'VO-03/04':true }, fPk:'ALL', q:'', sel:null,
   scF:'ALL', scA:'ALL', evSt:'Todos', evPk:'ALL', evCode:null, evAll:false,
-  upPk:'P7', upCode:'VO-03/04', uploads:[], toast:'', custom:[], addFor:null
+  upPk:'P7', upCode:'VO-03/04', uploads:[], toast:'', custom:[], addFor:null, indSel:2
 };
-try { var h = (location.hash || '').replace('#', ''); if (h && ['overview','board','scurve','fin','evid','people','risks'].indexOf(h) >= 0) S.view = h; } catch (e) {}
+try { var h = (location.hash || '').replace('#', ''); if (h && ['overview','board','scurve','fin','evid','people','risks','ind'].indexOf(h) >= 0) S.view = h; } catch (e) {}
 
 S.custom = loadActs();
 function allEv(){ return S.uploads.concat(EV); }
@@ -651,7 +726,8 @@ var ICONS = {
   fin:'M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5',
   evid:'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM12 10v6M9 13l3-3 3 3',
   people:'M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2 20c0-3.3 3.1-6 7-6s7 2.7 7 6M16 4.5a3.5 3.5 0 0 1 0 6.5M22 20c0-2.6-1.8-4.8-4.5-5.6',
-  risks:'M12 3l9.5 17h-19zM12 10v4M12 17h.01'
+  risks:'M12 3l9.5 17h-19zM12 10v4M12 17h.01',
+  ind:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 12h.01'
 };
 var VIEWS = [
   { id:'overview', lab:'Visão geral', st:4, eb:'Decidir · visão executiva do programa', t:'Visão geral do programa' },
@@ -660,7 +736,8 @@ var VIEWS = [
   { id:'fin', lab:'Financeiro', st:2, eb:'Interpretar · valor agregado, desembolso e faturamento', t:'Cronograma financeiro' },
   { id:'evid', lab:'Evidências', st:1, eb:'Integrar · evidências rastreáveis por entregável', t:'Evidências e aceites' },
   { id:'people', lab:'Pessoas', st:5, eb:'Sustentar · papéis, alocação e responsabilidades', t:'Pessoas e alocação' },
-  { id:'risks', lab:'Riscos', st:3, eb:'Antecipar · riscos e sinais de alerta', t:'Riscos do programa' }
+  { id:'risks', lab:'Riscos', st:3, eb:'Antecipar · riscos e sinais de alerta', t:'Riscos do programa' },
+  { id:'ind', lab:'Indicadores', st:3, eb:'Antecipar · indicadores de meio e de fim', t:'Indicadores meio e fim' }
 ];
 var STAGES = ['1 Integrar', '2 Interpretar', '3 Antecipar', '4 Decidir', '5 Sustentar'];
 
@@ -1069,8 +1146,198 @@ function vRisks(){
   return h;
 }
 
+/* --- indicadores meio e fim --- */
+var IND = [
+  { id:1, n:'Aderência ao Modelo de CAPEX', full:'Aderência operacional ao Modelo de Gestão de CAPEX',
+    mede:'Se os processos, controles, responsabilidades e ritos do novo modelo estão sendo executados corretamente na operação real.',
+    f:'Requisitos operacionais conformes ÷ requisitos operacionais verificados × 100', v:86, meta:90,
+    hist:[58,66,72,78,82,84,80,83,85,86], fonte:'Protocolos de verificação operacional (VO-03) por unidade', freq:'Mensal, por unidade', own:'PL',
+    gat:'Abaixo de 85% em 2 ciclos seguidos: plano de ação no fórum tático',
+    nota:'Os desvios abertos se concentram nas 2 unidades da Onda 1 que ainda têm pendências no relatório de estabilização (VO-03/04).',
+    meio:[
+      ['Processos formalizados','Processos do modelo com desenho aprovado.','Processos aprovados ÷ processos previstos',100,100],
+      ['Papéis definidos','Papéis do modelo com responsabilidade aprovada.','Papéis com responsabilidade aprovada ÷ papéis mapeados',96,100],
+      ['Controles implantados','Controles do modelo disponíveis para uso no sistema ou no rito.','Controles disponibilizados ÷ controles previstos',88,95],
+      ['Procedimentos disponíveis','Procedimentos publicados no repositório oficial.','Procedimentos publicados ÷ procedimentos necessários',92,100],
+      ['Perfis capacitados','Perfis de usuário que já receberam a capacitação prevista.','Perfis capacitados ÷ perfis previstos',94,95],
+      ['Cobertura de testes de processo','Cenários de processo executados nos testes.','Cenários executados ÷ cenários previstos',97,95],
+      ['Desvios operacionais tratados','Desvios de aderência identificados e encerrados.','Desvios encerrados ÷ desvios identificados',78,90],
+      ['Evidências operacionais disponíveis','Evidências válidas da execução dos processos e controles.','Evidências válidas ÷ evidências requeridas',85,95]
+    ] },
+  { id:2, n:'Autonomia operacional', full:'Autonomia operacional',
+    mede:'Se as equipes do cliente conseguem operar o modelo sem dependência recorrente da Contratada ou da Implementadora.',
+    f:'Atividades críticas executadas sem intervenção externa ÷ atividades críticas observadas × 100', v:71, meta:90,
+    hist:[30,38,47,55,62,68,58,63,68,71], fonte:'Observação das atividades críticas por amostra e registro de chamados', freq:'Mensal, por onda', own:'JS',
+    gat:'Abaixo de 80% 60 dias após o go-live: reforço do acompanhamento no hypercare',
+    nota:'A cobertura de capacitação já está em 95%, mas o acompanhamento no hypercare e a base de conhecimento ainda não convertem o treinamento em autonomia. É o caso típico de meio cumprido sem o fim atingido.',
+    meio:[
+      ['Cobertura de capacitação','Pessoas do público-alvo que concluíram a capacitação.','Pessoas capacitadas ÷ público-alvo',95,95],
+      ['Aproveitamento na capacitação','Pessoas aprovadas na avaliação de aprendizagem.','Pessoas aprovadas ÷ pessoas avaliadas',88,85],
+      ['Multiplicadores habilitados','Multiplicadores aprovados para apoiar as unidades.','Multiplicadores aprovados ÷ multiplicadores previstos',80,100],
+      ['Materiais disponíveis','Materiais de apoio (manuais, EAD, vídeos) publicados.','Materiais publicados ÷ materiais necessários',85,100],
+      ['Dúvidas resolvidas na base de conhecimento','Dúvidas recorrentes que já têm resposta documentada.','Dúvidas documentadas ÷ dúvidas recorrentes',70,90],
+      ['Chamados por dúvida operacional','Chamados de dúvida de operação por usuário ativo no mês. Quanto menor, melhor.','Chamados de operação ÷ usuários ativos',60,100,'0,42','meta ≤ 0,25'],
+      ['Atividades acompanhadas no hypercare','Atividades críticas observadas em operação real durante o hypercare.','Atividades observadas ÷ atividades críticas',62,90],
+      ['Pendências de conhecimento encerradas','Lacunas de conhecimento identificadas e resolvidas.','Pendências encerradas ÷ pendências identificadas',74,90]
+    ] },
+  { id:3, n:'Confiabilidade dos dados', full:'Confiabilidade dos dados para gestão de CAPEX',
+    mede:'Se as informações de SAP, Primavera, EPPM e demais fontes são completas, consistentes e rastreáveis para análise e decisão.',
+    f:'30% C + 30% A + 20% T + 20% P · C completude, A acurácia/conciliação, T tempestividade, P rastreabilidade/proveniência', v:93, meta:98,
+    hist:[78,82,85,88,90,91,89,90,92,93], fonte:'Painel de qualidade de dados (PD-06) e conciliações SAP × Primavera × EPPM', freq:'Semanal', own:'CR',
+    gat:'Abaixo de 95% ou divergência material aberta há mais de 10 dias: escalonamento',
+    nota:'A acurácia (conciliação) é o componente mais fraco e puxa o índice para baixo, em linha com o risco R03.',
+    comp:[['C','Completude',96,30],['A','Acurácia / conciliação',89,30],['T','Tempestividade',95,20],['P','Rastreabilidade / proveniência',92,20]],
+    meio:[
+      ['Regras de qualidade implementadas','Regras automáticas de qualidade em funcionamento.','Regras implementadas ÷ regras previstas',90,100],
+      ['Campos críticos preenchidos','Preenchimento dos campos críticos nos sistemas.','Campos preenchidos ÷ campos críticos esperados',96,98],
+      ['Interfaces testadas','Interfaces entre sistemas aprovadas nos testes.','Interfaces aprovadas ÷ interfaces previstas',100,100],
+      ['Conciliações executadas','Conciliações entre fontes realizadas conforme o plano.','Conciliações realizadas ÷ conciliações planejadas',92,100],
+      ['Divergências tratadas','Divergências de dados encontradas e encerradas.','Divergências encerradas ÷ divergências encontradas',74,90],
+      ['Dados carregados no prazo','Cargas de dados concluídas dentro do SLA.','Cargas no SLA ÷ cargas previstas',95,98],
+      ['Linhagem documentada','Elementos críticos com origem e transformações documentadas.','Elementos com linhagem ÷ elementos críticos',82,100],
+      ['Sistemas mestres definidos','Objetos críticos com fonte oficial definida.','Objetos com fonte oficial definida ÷ objetos críticos',100,100]
+    ] },
+  { id:4, n:'Efetividade do Cost Control', full:'Efetividade do Cost Control',
+    mede:'Se o Cost Control usa dados reais e confiáveis para produzir análises que entram nos ritos de gestão e geram decisões ou ações.',
+    f:'Produtos analíticos válidos e utilizados nos fóruns ÷ produtos analíticos previstos para os fóruns × 100', v:64, meta:80,
+    hist:[20,28,35,42,50,55,58,60,62,64], fonte:'Atas dos fóruns e registro de decisões (GI-04)', freq:'Mensal', own:'FT',
+    gat:'Abaixo de 70% em 2 fóruns seguidos: rever a pauta e o formato dos produtos',
+    nota:'Prazo, fonte e apresentação estão em dia. O que derruba a validade dos produtos é a falta de análise ou recomendação junto ao número.',
+    crit:[['Produzido no prazo',92],['Baseado em fonte rastreável',95],['Conciliado, quando aplicável',89],['Apresentado no fórum',81],['Acompanhado de análise ou recomendação',70]],
+    meio:[
+      ['Indicadores especificados','Indicadores do catálogo com conceito, cálculo e fonte definidos.','Indicadores especificados ÷ indicadores previstos',100,100],
+      ['Dashboards validados','Dashboards aprovados pelo negócio.','Dashboards aprovados ÷ dashboards previstos',85,100],
+      ['Conciliações realizadas','Indicadores críticos conciliados com a fonte oficial.','Indicadores conciliados ÷ indicadores críticos',89,95],
+      ['Reportes emitidos','Reportes emitidos conforme o calendário.','Reportes emitidos ÷ reportes programados',92,100],
+      ['Fóruns realizados','Fóruns de gestão realizados conforme o calendário.','Fóruns realizados ÷ fóruns planejados',100,100],
+      ['Análises produzidas','Análises emitidas pelo Cost Control.','Análises emitidas ÷ análises requeridas',75,100,'6 de 8','meta 8'],
+      ['Alertas tratados','Alertas de desvio com encaminhamento definido.','Alertas com encaminhamento ÷ alertas emitidos',70,90],
+      ['Equipe habilitada','Profissionais do Cost Control habilitados nos papéis.','Profissionais habilitados ÷ profissionais previstos',80,100]
+    ] },
+  { id:5, n:'Estabilidade operacional', full:'Estabilidade operacional da unidade',
+    mede:'Se, após o go-live, a unidade mantém o modelo funcionando sem incidentes críticos, regressões ou dependência excessiva de suporte.',
+    f:'Unidade estável = 1 se todos os critérios críticos forem atendidos; 0 caso contrário. Consolidado: unidades estáveis ÷ unidades em operação', v:67, meta:67, plan:true, vt:'4 de 6', mt:'unidades estáveis · previsto para M15: 4 · meta: 6 de 6 em M20',
+    hist:[0,0,0,100,100,100,100,17,50,67], fonte:'Checklist de critérios críticos por unidade (VO-03) e gestão de chamados', freq:'Semanal no hypercare, depois mensal', own:'PL',
+    gat:'Incidente crítico aberto há mais de 48 horas: acionar o comitê de crise',
+    nota:'Piloto e 3 unidades da Onda 1 já atendem todos os critérios. As unidades 5 e 6 ainda não demonstraram autonomia e têm itens abertos.',
+    units:[['Piloto',[1,1,1,1,1,1,1]],['Unidade 2',[1,1,1,1,1,1,1]],['Unidade 3',[1,1,1,1,1,1,1]],['Unidade 4',[1,1,1,1,1,1,1]],['Unidade 5',[1,1,0,1,1,0,1]],['Unidade 6',[1,1,1,0,1,0,0]]],
+    ucrit:['Nenhum incidente crítico impeditivo','Processos críticos executados','Dados críticos conciliados','Ciclo operacional concluído','Usuários operando','Autonomia demonstrada','Pendências residuais com plano aprovado'],
+    meio:[
+      ['Cenários testados','Cenários de teste executados antes do go-live.','Cenários executados ÷ previstos',98,95],
+      ['Defeitos corrigidos','Defeitos identificados e encerrados.','Defeitos encerrados ÷ defeitos identificados',93,95],
+      ['Readiness concluído','Itens do checklist de prontidão concluídos.','Itens prontos ÷ itens previstos',100,100],
+      ['Usuários habilitados','Usuários com acesso adequado no go-live.','Usuários com acesso adequado ÷ usuários previstos',99,100],
+      ['Chamados resolvidos no SLA','Chamados atendidos dentro do SLA.','Chamados no SLA ÷ chamados recebidos',91,90],
+      ['Desvios de processo tratados','Desvios de processo identificados e encerrados.','Desvios encerrados ÷ desvios identificados',84,90],
+      ['Ciclos operacionais acompanhados','Ciclos operacionais concluídos com acompanhamento.','Ciclos concluídos ÷ ciclos requeridos',94,100],
+      ['Pendências com plano','Pendências abertas que têm responsável e prazo.','Pendências com responsável e prazo ÷ pendências abertas',88,100]
+    ] },
+  { id:6, n:'Implantação efetiva do programa', full:'Implantação efetiva do programa',
+    mede:'Se o modelo foi implantado, estabilizado e aceito no piloto, nas ondas, nas 12 unidades e no CSC aplicável.',
+    f:'Unidades estabilizadas e formalmente aceitas ÷ unidades previstas × 100. O denominador considera as 12 unidades; o CSC é tratado à parte se não for equivalente a uma unidade.', v:8, meta:8, plan:true, vt:'1 de 12', mt:'previsto para M15: 1 · meta: 12 de 12 em M30 · CSC à parte',
+    hist:[0,0,0,8,8,8,8,8,8,8], fonte:'Termos de aceite (EI5/EI6) e dossiês de prontidão', freq:'Por marco', own:'MC',
+    gat:'Gate atrasado há mais de 30 dias: decisão no fórum executivo',
+    nota:'Piloto aceito (EI5). A próxima conversão é o aceite das 5 unidades da Onda 1, previsto para M20.',
+    meio:[
+      ['Unidades mobilizadas','Unidades com equipe local e ponto focal definidos.','Unidades mobilizadas ÷ previstas',100,100,'7 de 7','previstas'],
+      ['Preparação local concluída','Unidades da onda prontas para o go-live.','Unidades prontas ÷ unidades da onda',100,100,'5 de 5','Onda 1'],
+      ['Go-lives realizados','Go-lives feitos conforme o plano.','Go-lives realizados ÷ previstos',100,100,'6 de 6','previstos'],
+      ['Gates aprovados','Gates aprovados conforme o programado.','Gates aprovados ÷ Gates programados',90,100,'9 de 10','programados'],
+      ['Estabilizações iniciadas','Unidades com go-live que já estão em estabilização.','Unidades em estabilização ÷ unidades com go-live',100,100,'5 de 5','pendentes'],
+      ['Evidências entregues','Evidências válidas para o aceite.','Evidências válidas ÷ evidências exigidas',91,100],
+      ['Aceites obtidos','Aceites formalizados conforme o plano.','Aceites formalizados ÷ aceites previstos',100,100,'1 de 1','previsto'],
+      ['Pendências residuais tratadas','Pendências residuais com tratamento aprovado.','Pendências com tratamento aprovado ÷ pendências abertas',80,100]
+    ] }
+];
+function fimExtra(f){
+  if (f.comp){
+    return '<div class="dsec">Composição do índice</div><div class="xparts">' + f.comp.map(function(c){ var s2 = stOf(attOf(c[2], f.meta)); return '<div class="xpart"><span class="xk">' + c[0] + '</span><span style="flex:1;min-width:0"><b style="font-size:13px">' + c[1] + '</b><span class="small muted"> · peso ' + c[3] + '%</span><span class="bar" style="display:block;margin-top:5px"><b style="width:' + c[2] + '%;background:' + s2[1] + '"></b></span></span><b class="num">' + c[2] + '%</b></div>'; }).join('') +
+      '<div class="small muted">0,3 × ' + f.comp[0][2] + ' + 0,3 × ' + f.comp[1][2] + ' + 0,2 × ' + f.comp[2][2] + ' + 0,2 × ' + f.comp[3][2] + ' = ' + f1(f.comp.reduce(function(a, c){ return a + c[2] * c[3] / 100; }, 0)) + '%</div></div>';
+  }
+  if (f.crit){
+    return '<div class="dsec">Um produto só conta como válido se atender aos 5 critérios</div><div class="xparts">' + f.crit.map(function(c, i){ var s2 = stOf(attOf(c[1], 90)); return '<div class="xpart"><span class="xk">' + (i + 1) + '</span><span style="flex:1;min-width:0"><b style="font-size:13px">' + c[0] + '</b><span class="bar" style="display:block;margin-top:5px"><b style="width:' + c[1] + '%;background:' + s2[1] + '"></b></span></span><b class="num">' + c[1] + '%</b></div>'; }).join('') + '<div class="small muted">% dos produtos previstos que atendem a cada critério. Atendem aos 5 ao mesmo tempo: ' + f.v + '%.</div></div>';
+  }
+  if (f.units){
+    return '<div class="dsec">Critérios críticos por unidade em operação</div><div class="xs"><table class="ucrit"><thead><tr><th scope="col">Critério</th>' + f.units.map(function(u){ return '<th scope="col">' + u[0] + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      f.ucrit.map(function(c, i){ return '<tr><th scope="row">' + c + '</th>' + f.units.map(function(u){ return '<td>' + (u[1][i] ? '<span class="ok" aria-label="Atendido">✓</span>' : '<span class="no" aria-label="Não atendido">✕</span>') + '</td>'; }).join('') + '</tr>'; }).join('') +
+      '<tr class="tot"><th scope="row">Unidade estável</th>' + f.units.map(function(u){ var ok = u[1].every(function(x){ return x; }); return '<td>' + (ok ? '<b class="ok">1</b>' : '<b class="no">0</b>') + '</td>'; }).join('') + '</tr></tbody></table></div>';
+  }
+  return '';
+}
+function attOf(v, meta){ return Math.max(0, Math.min(100, meta ? v / meta * 100 : 100)); }
+function indAtt(f){ return f.plan ? 100 : attOf(f.v, f.meta); }
+function stOf(a, plan){ return a >= 100 ? [plan ? 'No plano' : 'No alvo', 'var(--good)', '#E3F6E8', '#1B7F3B'] : (a >= 92 ? ['Atenção', 'var(--warn)', '#FFF1DC', '#9A5B00'] : ['Abaixo da meta', 'var(--bad)', '#FDE7EA', '#C4213A']); }
+function meioAvg(f){ var s = 0; f.meio.forEach(function(m){ s += attOf(m[3], m[4]); }); return s / f.meio.length; }
+function mText(m){ return m[5] ? m[5] : m[3] + '%'; }
+function mMeta(m){ return m[6] ? m[6] : 'meta ' + m[4] + '%'; }
+function spark(f){
+  var max = 100, n = f.hist.length;
+  var X = function(i){ return (i / (n - 1) * 1000).toFixed(1); }, Y = function(v){ return (100 - v / max * 100).toFixed(1); };
+  var d = f.hist.map(function(v, i){ return (i ? 'L' : 'M') + X(i) + ' ' + Y(v); }).join(' ');
+  return '<svg class="spark" viewBox="0 0 1000 100" preserveAspectRatio="none" role="img" aria-label="Evolução de M' + (T - n + 1) + ' a M' + T + '"><path class="a" d="' + d + ' L1000 100 L0 100 Z"/><path class="m" d="M0 ' + Y(f.meta) + ' H1000"/><path class="s" d="' + d + '"/></svg>';
+}
+function mRow(f, m, j){
+  var a = attOf(m[3], m[4]), st = stOf(a);
+  return '<button class="mrow" data-tip="' + f.id + '-' + j + '" aria-label="' + esc(m[0]) + ': ' + esc(mText(m)) + '"><span class="trunc">' + m[0] + '</span><span class="bar"><b style="width:' + a.toFixed(0) + '%;background:' + st[1] + '"></b></span><span class="num">' + mText(m) + '</span></button>';
+}
+function vInd(){
+  var sel = IND.filter(function(f){ return f.id === S.indSel; })[0] || IND[0];
+  var h = '<div class="card pad"><div class="chead"><h2 class="ct">Como ler os indicadores</h2><span class="small muted">Passe o mouse sobre cada meio para ver a definição e a fórmula</span></div>' +
+    '<div class="ind-intro"><div class="ind-box"><span class="k" style="color:var(--brand-2)">Meio</span><b>Aquilo que eu controlo ou faço para provocar o resultado</b><span class="small muted">Mede o esforço e a execução. Reage rápido e permite corrigir o rumo antes do resultado aparecer. Ex.: 95% dos usuários capacitados.</span></div>' +
+    '<div class="ind-arrow" aria-hidden="true">' + ic('M5 12h14M13 6l6 6-6 6') + '</div>' +
+    '<div class="ind-box"><span class="k" style="color:var(--good)">Fim</span><b>O resultado que espero obter</b><span class="small muted">Mede o efeito na operação. Demora mais a reagir e confirma se os meios funcionaram. Ex.: 90% dos usuários executando o novo processo sem suporte da consultoria.</span></div></div>' +
+    '<div class="legs small"><span class="leg"><span class="dot" style="--c:var(--good)"></span>No alvo ou no plano</span><span class="leg"><span class="dot" style="--c:var(--warn)"></span>Atenção (92% a 99% da meta)</span><span class="leg"><span class="dot" style="--c:var(--bad)"></span>Abaixo da meta</span><span class="leg"><i class="dash" style="--c:var(--muted)"></i>Meta no gráfico de evolução</span></div></div>';
+  h += '<div class="ind-grid">' + IND.map(function(f){
+    var a = indAtt(f), st = stOf(a, f.plan);
+    return '<article class="card icard' + (f.id === sel.id ? ' on' : '') + '" aria-label="Indicador ' + f.id + ': ' + f.n + '">' +
+      '<div class="ihead"><span class="inum">' + f.id + '</span><h3>' + f.n + '</h3>' + pill(st[0], [st[2], st[3]]) + '</div>' +
+      '<div class="ival"><div style="display:flex;flex-direction:column;gap:4px"><span class="v num" style="color:' + st[1] + '">' + (f.vt || f.v + '%') + '</span><span class="small muted">' + (f.mt || 'meta ' + f.meta + '%') + '</span></div>' + spark(f) + '</div>' +
+      '<p class="imede">' + f.mede + '</p>' +
+      '<div class="mlist"><span class="small muted" style="font-weight:600;padding:0 6px 4px">Meios que compõem · ' + Math.round(meioAvg(f)) + '% das metas atingidas</span>' + f.meio.map(function(m, j){ return mRow(f, m, j); }).join('') + '</div>' +
+      '<button class="btn ilink" data-act="indsel" data-arg="' + f.id + '">Ver detalhe do indicador ' + f.id + '</button></article>';
+  }).join('') + '</div>';
+  // detail tree
+  var a = indAtt(sel), st = stOf(a, sel.plan);
+  var low = sel.meio.slice().sort(function(x, y){ return attOf(x[3], x[4]) - attOf(y[3], y[4]); }).slice(0, 2).filter(function(m){ return attOf(m[3], m[4]) < 100; });
+  h += '<div class="g12"><div class="card pad s8" id="ind-detail"><div class="chead"><h2 class="ct">' + sel.id + ' · ' + sel.full + '</h2><div class="chips">' + IND.map(function(f){ return '<button class="chip" data-act="indsel" data-arg="' + f.id + '" aria-pressed="' + (f.id === sel.id) + '">' + f.id + '</button>'; }).join('') + '</div></div>' +
+    '<div class="tree"><div class="tleft"><span class="small muted" style="font-weight:600">Meios (o que fazemos)</span>' + sel.meio.map(function(m, j){ var ma = attOf(m[3], m[4]), ms = stOf(ma); return '<div class="tnode" data-tip="' + sel.id + '-' + j + '" tabindex="0"><span style="display:flex;flex-direction:column;min-width:0"><b class="trunc" style="font-size:13px">' + m[0] + '</b><span class="small muted trunc">' + m[2] + '</span></span><span class="bar"><b style="width:' + ma.toFixed(0) + '%;background:' + ms[1] + '"></b></span><span class="num" style="text-align:right;font-size:12.5px;font-weight:700;color:' + ms[1] + '">' + mText(m) + '<br><span class="muted" style="font-weight:400;font-size:11px">' + mMeta(m) + '</span></span></div>'; }).join('') + '</div>' +
+    '<div class="tmid" aria-hidden="true"></div>' +
+    '<div class="tright"><span class="small muted" style="font-weight:600">Fim (o resultado)</span><div class="tfim" style="--c:' + st[1] + '"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px">' + pill(st[0], [st[2], st[3]]) + '<span class="small muted">M' + T + '</span></div><span class="v num" style="color:' + st[1] + '">' + (sel.vt || sel.v + '%') + '</span><span class="small muted">' + (sel.mt || 'meta ' + sel.meta + '%') + '</span>' + spark(sel) +
+    '<dl class="dl" style="grid-template-columns:96px minmax(0,1fr)"><dt>Fórmula</dt><dd>' + sel.f + '</dd><dt>Fonte*</dt><dd>' + sel.fonte + '</dd><dt>Frequência</dt><dd>' + sel.freq + '</dd><dt>Responsável</dt><dd style="display:flex;align-items:center;gap:6px">' + av(sel.own) + PE[sel.own].n + '</dd><dt>Gatilho*</dt><dd>' + sel.gat + '</dd></dl><span class="small muted">* Sugestão para validar. Fórmula e meios conforme a planilha de indicadores.</span></div></div></div>' + fimExtra(sel) +
+    '<div class="ind-read"><b>Leitura</b><span>' + sel.nota + (low.length ? ' Os meios mais distantes da meta: ' + low.map(function(m){ return m[0] + ' (' + mText(m) + ', ' + mMeta(m) + ')'; }).join(' e ') + '.' : '') + '</span></div></div>';
+  // dumbbell: meios x fim
+  var P = function(v){ return ((Math.max(50, v) - 50) / 50 * 100).toFixed(2); };
+  h += '<div class="card pad s4"><div class="chead"><h2 class="ct">Esforço × resultado</h2></div><span class="small muted">Para cada indicador, quanto dos meios já atingiu a meta e quanto o fim atingiu. Quanto maior a distância, mais o esforço ainda não virou resultado.</span>' +
+    '<div class="db" role="img" aria-label="Comparação entre meios e fim dos 6 indicadores">' +
+    '<div class="dbaxis"><span style="left:0">50%</span><span style="left:50%">75%</span><span style="left:100%">100%</span></div>' +
+    IND.map(function(f){ var x = meioAvg(f), y = indAtt(f), st2 = stOf(y, f.plan), lo = Math.min(x, y), hi = Math.max(x, y);
+      return '<button class="dbrow' + (f.id === sel.id ? ' on' : '') + '" data-act="indsel" data-arg="' + f.id + '" aria-label="' + f.n + ': meios ' + Math.round(x) + '%, fim ' + Math.round(y) + '% da meta"><span class="dbl"><span class="inum" style="width:22px;height:22px;font-size:11px">' + f.id + '</span><span class="trunc">' + f.n + '</span></span><span class="dbt"><span class="dbline" style="left:' + P(lo) + '%;width:' + (P(hi) - P(lo)).toFixed(2) + '%"></span><span class="dbm" style="left:' + P(x) + '%" title="Meios: ' + Math.round(x) + '%"></span><span class="dbf" style="left:' + P(y) + '%;background:' + st2[1] + '" title="Fim: ' + Math.round(y) + '%"></span></span><span class="dbg num" style="color:' + (x - y > 8 ? 'var(--bad)' : 'var(--muted)') + '">' + (x - y > 1 ? '−' + Math.round(x - y) + ' p.p.' : 'ok') + '</span></button>';
+    }).join('') + '</div>' +
+    '<div class="legs small"><span class="leg"><span class="dbm s"></span>Meios (% das metas atingidas)</span><span class="leg"><span class="dbf s" style="background:var(--muted)"></span>Fim (% da meta), na cor do status</span></div>' +
+    '<div class="ind-read"><b>Como usar</b><span>Meio alto com fim baixo indica que o esforço está acontecendo mas ainda não produz o resultado' + (function(){ var g = IND.filter(function(f){ return meioAvg(f) - indAtt(f) > 5; }).map(function(f){ return f.id + ' (' + f.n + ')'; }); return g.length ? '. Hoje isso aparece em ' + g.join(' e ') : ''; })() + '. Nesses casos, vale revisar se os meios escolhidos são os que realmente movem o fim.</span></div></div></div>';
+  return h;
+}
+var TIPEL = null;
+function showTip(el){
+  var k = el.getAttribute('data-tip').split('-'), f = IND.filter(function(x){ return x.id === +k[0]; })[0]; if (!f) return;
+  var m = f.meio[+k[1]];
+  if (!TIPEL){ TIPEL = document.createElement('div'); TIPEL.id = 'tip'; TIPEL.setAttribute('role', 'tooltip'); document.body.appendChild(TIPEL); }
+  TIPEL.innerHTML = '<b>' + m[0] + '</b>' + m[1] + '<div class="tk">Fórmula</div>' + m[2] + '<div class="tk">Atual · meta</div>' + mText(m) + ' · ' + mMeta(m).replace('meta ', '') + '<div class="tk">Alimenta o fim</div>' + f.n;
+  TIPEL.hidden = false;
+  var r = el.getBoundingClientRect(), tw = TIPEL.offsetWidth, th = TIPEL.offsetHeight;
+  var left = Math.min(window.innerWidth - tw - 12, Math.max(12, r.left + r.width / 2 - tw / 2));
+  var top = r.top - th - 10; if (top < 60) top = r.bottom + 10;
+  TIPEL.style.left = left + 'px'; TIPEL.style.top = top + 'px';
+}
+function hideTip(){ if (TIPEL) TIPEL.hidden = true; }
+document.addEventListener('mouseover', function(e){ var t = e.target.closest && e.target.closest('[data-tip]'); if (t) showTip(t); });
+document.addEventListener('mouseout', function(e){ var t = e.target.closest && e.target.closest('[data-tip]'); if (t && !t.contains(e.relatedTarget)) hideTip(); });
+document.addEventListener('focusin', function(e){ var t = e.target.closest && e.target.closest('[data-tip]'); if (t) showTip(t); else hideTip(); });
+window.addEventListener('scroll', hideTip, { passive:true });
+
+
 /* ---------- render & events ---------- */
-var VIEWFN = { overview:vOverview, board:vBoard, scurve:vScurve, fin:vFin, evid:vEvid, people:vPeople, risks:vRisks };
+var VIEWFN = { overview:vOverview, board:vBoard, scurve:vScurve, fin:vFin, evid:vEvid, people:vPeople, risks:vRisks, ind:vInd };
 function render(){
   var keep = {}; document.querySelectorAll('.xs').forEach(function(el, i){ keep[i] = el.scrollLeft; });
   renderShell();
@@ -1106,6 +1373,7 @@ var ACT = {
   delact:function(a){ S.custom = S.custom.filter(function(x){ return x.id !== a && x.parent !== a; }); saveActs(); set({}); },
   cancelAdd:function(){ set({ addFor:null }); },
   trackadd:function(a, t, e){ var r = t.getBoundingClientRect(), ws = +t.getAttribute('data-ws'), nw = +t.getAttribute('data-nw'); var m = Math.max(1, Math.min(N, ws + Math.floor((e.clientX - r.left) / r.width * nw))); var od = Object.assign({}, S.openD); od[a] = true; set({ addFor:{ code:a, parent:null, a:m }, openD:od }); focusForm(); },
+  indsel:function(a){ set({ indSel:+a }); var el = document.getElementById('ind-detail'); if (el) el.scrollIntoView({ block:'start', behavior:'smooth' }); },
   fs:function(){ try { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(function(){}); } catch (e) {} }
 };
 document.addEventListener('click', function(e){ var t = e.target.closest('[data-act]'); if (!t) return; var f = ACT[t.getAttribute('data-act')]; if (f) f(t.getAttribute('data-arg'), t, e); });
